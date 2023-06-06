@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           width: MediaQuery.of(context).size.width * .8,
           height: MediaQuery.of(context).size.width * .5,
           color: const Color.fromARGB(255, 194, 193, 193),
-          child: const LineChart(),
+          child: const LineChartWidget(),
         ),
       ),
     );
