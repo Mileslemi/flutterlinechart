@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../models/yearly_profit_points.dart';
+
 class LineChartWidget extends StatelessWidget {
   const LineChartWidget({super.key});
 
@@ -85,27 +87,45 @@ Widget bottomTitlesWidget(double value, TitleMeta meta) {
 
   Widget text;
   switch (value.toInt()) {
+    case 0:
+      text = const Text(
+        "'17",
+        style: style,
+      );
+      break;
+    case 1:
+      text = const Text(
+        "'18",
+        style: style,
+      );
+      break;
     case 2:
       text = const Text(
-        '2021',
+        "'19",
         style: style,
       );
       break;
-    case 7:
+    case 3:
       text = const Text(
-        '2022',
+        "'20",
         style: style,
       );
       break;
-    case 12:
+    case 4:
       text = const Text(
-        '2023',
+        "'21",
         style: style,
       );
       break;
-    case 17:
+    case 5:
       text = const Text(
-        '2024',
+        "'22",
+        style: style,
+      );
+      break;
+    case 6:
+      text = const Text(
+        "'23",
         style: style,
       );
       break;
@@ -142,21 +162,11 @@ FlBorderData get borderData => FlBorderData(
 List<LineChartBarData>? lineBarsData = [linechartbardata1];
 
 LineChartBarData get linechartbardata1 => LineChartBarData(
-        isCurved: true,
-        color: Colors.purple,
-        barWidth: 3,
-        isStrokeCapRound: true,
-        dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(
-            show: true, color: const Color.fromARGB(44, 183, 49, 206)),
-        spots: const [
-          FlSpot(0, 1.1),
-          FlSpot(1, 1),
-          FlSpot(2, 1.3),
-          FlSpot(4, 1.5),
-          FlSpot(5, 2.1),
-          FlSpot(7, 2.2),
-          FlSpot(8, 1.8),
-          FlSpot(10, 2.1),
-          FlSpot(13, 2.6),
-        ]);
+    isCurved: true,
+    color: Colors.purple,
+    barWidth: 3,
+    isStrokeCapRound: true,
+    dotData: FlDotData(show: true),
+    belowBarData:
+        BarAreaData(show: true, color: const Color.fromARGB(44, 183, 49, 206)),
+    spots: yearlyProfitPoints.map((e) => FlSpot(e.x, e.y)).toList());
