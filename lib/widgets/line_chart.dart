@@ -20,19 +20,33 @@ LineChartData get lineChartData => LineChartData(
       borderData: borderData,
       lineBarsData: lineBarsData,
       minX: 0,
-      maxX: 14,
+      maxX: 6,
       minY: 0,
       maxY: 4,
     );
 
 FlTitlesData get titlesData => FlTitlesData(
       // draws the x and y axis
-      bottomTitles: AxisTitles(sideTitles: bottomTitles),
+      bottomTitles: AxisTitles(
+          sideTitles: bottomTitles,
+          axisNameWidget: const Text(
+            'Years',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey,
+            ),
+          )),
       rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
       topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
       leftTitles: AxisTitles(
-        sideTitles: leftTitles(),
-      ),
+          sideTitles: leftTitles(),
+          axisNameWidget: const Text('Ksh (Millions)',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ))),
     );
 
 Widget leftTitlesWidget(double value, TitleMeta meta) {
@@ -130,19 +144,19 @@ Widget bottomTitlesWidget(double value, TitleMeta meta) {
       );
       break;
     default:
-      text = const Text('');
+      text = const Text(' ');
       break;
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,
-    space: 10,
+    space: 8,
     child: text,
   );
 }
 
 SideTitles get bottomTitles => SideTitles(
       showTitles: true,
-      reservedSize: 30,
+      reservedSize: 40,
       interval: 1,
       getTitlesWidget: bottomTitlesWidget,
     );
