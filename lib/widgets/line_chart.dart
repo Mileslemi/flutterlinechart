@@ -18,7 +18,7 @@ LineChartData get lineChartData => LineChartData(
       borderData: borderData,
       lineBarsData: lineBarsData,
       minX: 0,
-      maxX: 7,
+      maxX: 14,
       minY: 0,
       maxY: 4,
     );
@@ -103,6 +103,12 @@ Widget bottomTitlesWidget(double value, TitleMeta meta) {
         style: style,
       );
       break;
+    case 17:
+      text = const Text(
+        '2024',
+        style: style,
+      );
+      break;
     default:
       text = const Text('');
       break;
@@ -127,8 +133,8 @@ FlBorderData get borderData => FlBorderData(
     // the borders
     show: true,
     border: const Border(
-      bottom: BorderSide(color: Colors.black, width: 4),
-      left: BorderSide(color: Colors.black, width: 4),
+      bottom: BorderSide(color: Color.fromARGB(255, 131, 130, 130), width: 2),
+      left: BorderSide(color: Color.fromARGB(255, 131, 130, 130), width: 2),
       top: BorderSide(color: Colors.transparent),
       right: BorderSide(color: Colors.transparent),
     ));
@@ -138,11 +144,13 @@ List<LineChartBarData>? lineBarsData = [linechartbardata1];
 LineChartBarData get linechartbardata1 => LineChartBarData(
         isCurved: true,
         color: Colors.purple,
-        barWidth: 6,
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
+        belowBarData: BarAreaData(
+            show: true, color: const Color.fromARGB(44, 183, 49, 206)),
         spots: const [
+          FlSpot(0, 1.1),
           FlSpot(1, 1),
           FlSpot(2, 1.3),
           FlSpot(4, 1.5),
